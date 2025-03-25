@@ -1,0 +1,45 @@
+[project]
+name = "streamlit-dashboard-hearth-disease"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "duckdb>=1.2.1",
+    "streamlit>=1.44.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "ipykernel>=6.29.5",
+    "jupyter>=1.1.1",
+    "notebook>=7.3.3",
+    "pyright>=1.1.397",
+    "ruff>=0.11.2",
+    "taskipy>=1.14.1",
+]
+
+[tool.taskipy.tasks]
+format = """
+ruff chec --select I --fix .
+ruff format .
+"""
+
+[tool.black]
+line-length = 88
+skip-string-normalization = false
+
+[tool.ruff]
+select = ["E", "F", "W", "I", "ANN"]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.pyright]
+reportMissingTypeStubs = true
+reportOptionalMemberAccess = true
+reportGeneralTypeIssues = true
+reportOptionalSubscript = true
