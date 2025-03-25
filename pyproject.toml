@@ -34,6 +34,7 @@ skip-string-normalization = false
 select = ["E", "F", "W", "I", "ANN"]
 line-length = 88
 target-version = "py312"
+ignore = ["C901"]
 
 [tool.ruff.flake8-tidy-imports]
 ban-relative-imports = "all"
