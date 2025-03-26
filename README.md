@@ -52,7 +52,7 @@ The data goes through an enhancement pipeline before being used in the dashboard
 
 ## 🚀 Streamlit Dashboard Features
 
-### 📊 Planned Visualizations:
+### 📊 Planned Visualizations
 
 - **Demographic Overview**
   - Age distribution by heart disease status
@@ -79,7 +79,7 @@ The data goes through an enhancement pipeline before being used in the dashboard
 ### 🚀 Run the dashboard
 
 ```bash
-streamlit run src/dashboard.py
+streamlit run src/main.py
 ```
 
 Access the interface at: [http://localhost:8501](http://localhost:8501)
