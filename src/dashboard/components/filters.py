@@ -1,39 +1,30 @@
-import streamlit as st
 from typing import Any
 
-def setup_sidebar_filters(df) -> Any:
-    st.sidebar.header("Filters")
+import streamlit as st
 
-    age_range = st.sidebar.slider(
-        "Age Range",
+
+def create_filters(df) -> Any:
+    st.sidebar.header("Filtros")
+
+    idade_min, idade_max = st.sidebar.slider(
+        "Faixa etária",
         min_value=int(df["age"].min()),
         max_value=int(df["age"].max()),
         value=(30, 70),
     )
 
-    filtered_df = df[df["age"].between(*age_range)]
+    sexo = st.sidebar.multiselect(
+        "Sexo", options=df["sexo"].unique(), default=df["sexo"].unique()
+    )
 
-    if st.sidebar.checkbox("Advanced Filters"):
-        filtered_df = apply_advanced_filters(filtered_df)
+    tipo_dor = st.sidebar.multiselect(
+        "Tipo de dor no peito",
+        options=df["tipo_dor_peito"].unique(),
+        default=df["tipo_dor_peito"].unique(),
+    )
 
-    return filtered_df
-
-
-def apply_advanced_filters(df):
-    col1, col2 = st.sidebar.columns(2)
-
-    with col1:
-        chest_pain = st.multiselect(
-            "Chest Pain Types",
-            options=df["chest_pain_type"].unique(),
-            default=df["chest_pain_type"].unique(),
-        )
-
-    with col2:
-        thal = st.multiselect(
-            "Thalassemia Types",
-            options=df["thalassemia"].unique(),
-            default=df["thalassemia"].unique(),
-        )
-
-    return df[df["chest_pain_type"].isin(chest_pain) & df["thalassemia"].isin(thal)]
+    return df[
+        (df["age"].between(idade_min, idade_max))
+        & (df["sexo"].isin(sexo))
+        & (df["tipo_dor_peito"].isin(tipo_dor))
+    ]
