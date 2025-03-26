@@ -6,6 +6,9 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "duckdb>=1.2.1",
+    "pandas-stubs>=2.2.3.250308",
+    "plotly>=6.0.1",
+    "statsmodels>=0.14.4",
     "streamlit>=1.44.0",
 ]
 
@@ -22,7 +25,7 @@ dev = [
 
 [tool.taskipy.tasks]
 format = """
-ruff chec --select I --fix .
+ruff check --select I --fix .
 ruff format .
 """
 
@@ -31,12 +34,14 @@ line-length = 88
 skip-string-normalization = false
 
 [tool.ruff]
-select = ["E", "F", "W", "I", "ANN"]
 line-length = 88
 target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "ANN"]
 ignore = ["C901"]
 
-[tool.ruff.flake8-tidy-imports]
+[tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
 
 [tool.pyright]
