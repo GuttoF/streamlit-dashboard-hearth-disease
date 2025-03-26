@@ -1,0 +1,14 @@
+services:
+    streamlit-dashboard:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "8501:8501"
+        volumes:
+            - ./data/processed:/app/data/processed
+            - ./data/interim:/app/data/interim
+        environment:
+            - UV_COMPILE_BYTECODE=1
+            - UV_LINK_MODE=copy
+        command: ["streamlit", "run", "src/main.py"]
