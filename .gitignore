@@ -56,6 +56,10 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 cover/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+.lock
 
 # Translations
 *.mo
@@ -132,6 +136,18 @@ celerybeat.pid
 
 # SageMath parsed files
 *.sage.py
+
+.terraform/
+*.tfstate
+.tfstate.
+*.tfvars
+.terraformrc
+terraform.rc
+*.pem
+*.key
+credentials.json
+credentials
+secret
 
 # Environments
 .env
