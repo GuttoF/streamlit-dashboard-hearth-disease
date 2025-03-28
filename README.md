@@ -8,9 +8,12 @@ This project provides an interactive dashboard for analyzing heart disease risk 
 
 ```bash
 streamlit-dashboard-hearth-disease/
-
+├── Dockerfile
+├── Dockerfile.dev
 ├── LICENSE
 ├── README.md
+├── ansible
+│   └── playbook.yml
 ├── data
 │   ├── interim
 │   │   └── db.db
@@ -18,10 +21,20 @@ streamlit-dashboard-hearth-disease/
 │   │   └── db_processed.db
 │   └── raw
 │       └── heart.csv
+├── deploy.sh
+├── docker-compose.yml
+├── main.tf
 ├── notebooks
 │   └── analysis.ipynb
 ├── pyproject.toml
+├── requirements.txt
 ├── src
+│   ├── dashboard
+│   │   └── components
+│   │       ├── __init__.py
+│   │       ├── filters.py
+│   │       ├── plots.py
+│   │       └── utils.py
 │   └── main.py
 ├── utils
 │   ├── __init__.py
@@ -69,10 +82,10 @@ The data goes through an enhancement pipeline before being used in the dashboard
 
 ### 🎛️ Interactive Elements
 
-✅ Filters by age group, gender, and risk factors  
-✅ Dynamic chart updates  
-✅ Exportable reports and visualizations  
-✅ Patient case studies drill-down  
+✅ Filters by age group, gender, and risk factors
+✅ Dynamic chart updates
+✅ Exportable reports and visualizations
+✅ Patient case studies drill-down
 
 ## 🛠️ Setup & Usage
 
@@ -93,9 +106,73 @@ Access the interface at: [http://localhost:8501](http://localhost:8501)
 5. **Interactive Visualizations** 📈
 6. **Risk Insights** 💡
 
-## 📅 Next Steps
+## Objective: Transform Data into Precise Clinical Decisions
 
-- 📄 Create PDF report generation
-- 🌍 Add multi-language support
+### 1. Introduction: The Power of Visual Analysis
+
+"Imagine being able to identify high-risk cardiac patients in seconds, with charts that speak the language of medicine. Our dashboard doesn’t just display numbers – it uncovers hidden patterns in your data, helping you save lives through proactive prevention."
+
+### 2. Current Problem
+
+**Challenges you face today:**
+
+❌ Confusing and static spreadsheets
+❌ Difficulty correlating multiple risk factors
+❌ Time wasted on manual analyses
+
+**Solution:**
+
+✅ Interactive dashboard that updates in real time
+✅ Intuitive visualization of 6 complementary charts
+✅ Clinical filters for personalized analyses
+
+### 3. Chart Demonstration
+
+#### Chart 1: Age Risk Map
+
+- **What it does:** Shows the distribution of diagnoses by age
+- **Differential:** Instant color coding (blue = healthy, red = at risk)
+- **Practical use:** Identify if patients aged 40-60 are your highest-risk population
+
+#### Chart 2: Blood Pressure-Cholesterol Correlation
+
+- **What it does:** Reveals the relationship between two key indicators
+- **Differential:** Trendline predicting combined risk
+- **Practical use:** Alert when a patient has both indicators elevated simultaneously
+
+#### Chart 3: Gender Analysis
+
+- **What it does:** Compares incidence between men and women
+- **Differential:** Shows if the difference is statistically significant
+- **Practical use:** Adapt preventive campaigns by gender
+
+#### Chart 4: Factor Heatmap
+
+- **What it does:** Measures how 12 clinical variables influence each other
+- **Differential:** Warm colors = dangerous correlations
+- **Practical use:** Discover that "diabetes + sedentary lifestyle" has a greater impact than each individually
+
+#### Chart 5: Cardiac Performance by Symptom
+
+- **What it does:** Compares heart rate across different types of pain
+- **Differential:** Boxplots highlight outliers (severe cases)
+- **Practical use:** Prioritize patients with atypical pain + irregular heartbeats
+
+#### Chart 6: Control Panel
+
+- **What it does:** Summarizes the most critical KPIs
+- **Differential:** Real-time updates during consultations
+- **Practical use:** Track metrics like "Average Cholesterol" and "% at Risk" per shift
+
+### 4. Exclusive Benefits
+
+**For your clinic:**
+
+🔄 Reduction in analysis time
+💾 Integration with existing systems (spreadsheets, electronic medical records)
+
+🌐 **Accessibility:**
+
+- Responsive (computer, tablet, or mobile)
 
 ⚠ **Note:** This dashboard is for educational purposes only. It is not intended for clinical or medical use.
